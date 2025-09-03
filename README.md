@@ -93,7 +93,3 @@ This project provides a comprehensive analysis of vendor performance, inventory 
 
 ---
 
-## 📁 How to Use
-1. Clone this repo.  
-```bash
-git clone https://github.com/nikitasharma-data27/Vendor-Analysis.git
