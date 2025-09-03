@@ -43,8 +43,6 @@ This project provides a comprehensive analysis of vendor performance, inventory 
 | Profit Margin vs Total Sales Price | −0.179 | Moderate negative; higher price → lower margin |
 | Stock Turnover vs Gross Profit/Margin | −0.05 | Faster turnover doesn’t guarantee higher profit |
 
-**Visualization: Heatmap of Correlations**  
-![Correlation Heatmap](images/heatmap.png)
 
 ---
 
@@ -64,10 +62,7 @@ This project provides a comprehensive analysis of vendor performance, inventory 
 - **High-performing vendors:** Boost margins via dynamic pricing, cost optimization, or bundling.  
 - **Low-performing vendors:** Improve marketing, pricing strategy, or distribution efficiency.
 
-**Visualization: Comparative Vendor Margins**  
-![Vendor Margins](images/bar_chart.png)
 
----
 
 ## 📊 Hypothesis Testing: Profit Margin Differences
 - **H₀:** No difference in mean profit margins  
