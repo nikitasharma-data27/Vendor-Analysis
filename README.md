@@ -78,11 +78,6 @@ I treated this analysis like a real-world supply chain consulting engagement:
 
 ---
 
-## 📷 Visual Highlights  
-*(Insert screenshots from your notebook for better recruiter engagement — e.g., bar charts for vendor profit margin comparison, distribution plots for freight cost, etc.)*  
-
----
-
 ## 💡 Business Recommendations  
 - **Eliminate loss-making SKUs** or renegotiate procurement prices.  
 - **Optimize freight costs** by consolidating shipments or switching vendors with extreme cost variability.  
