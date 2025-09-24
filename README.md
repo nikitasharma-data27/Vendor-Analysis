@@ -1,39 +1,33 @@
 # 📊 Vendor & Inventory Performance Analysis  
 
 ## 📌 Business Problem  
-Companies lose millions each year due to **inefficient vendor relationships, unsold inventory, and inconsistent profit margins**.  
-This project focuses on **identifying vendor performance gaps, optimizing purchasing strategies, and improving profitability** through data analysis.  
+Companies often **lose millions due to inefficient vendor management, slow-moving inventory, and inconsistent profit margins**.  
+This project aims to **analyze vendor performance, identify inventory inefficiencies, and recommend strategies to improve profitability**.  
 
 **Key Questions Answered:**  
-- Which vendors are driving the most profit — and which are hurting margins?  
-- How efficiently are we converting purchases into sales?  
-- Are there opportunities to optimize freight costs, pricing, or purchasing decisions?  
+- Which vendors drive the most profit — and which negatively affect margins?  
+- How efficiently are purchases converted into sales?  
+- Are there opportunities to optimize pricing, freight, and procurement strategies?  
 
 ---
 
 ## 🔍 Project Approach  
-I treated this analysis like a real-world supply chain consulting engagement:  
+I approached this analysis like a **real-world supply chain consulting engagement**:  
 
 1. **Data Exploration & Cleaning**  
-   - Surveyed multiple tables to build a consolidated vendor-performance dataset.  
-   - Removed/flagged zero-sales rows and negative profit anomalies.  
+   - Consolidated multiple tables into a single vendor-performance dataset.  
+   - Flagged negative profits, zero-sales SKUs, and missing values.  
 
 2. **Exploratory Data Analysis (EDA)**  
-   - Identified patterns, outliers, and anomalies in pricing, turnover, and freight costs.  
-   - Created metrics like **Sales-to-Purchase Ratio**, **Stock Turnover**, and **Unit Cost per Order Size**.  
+   - Investigated pricing, profit margins, sales-to-purchase ratios, stock turnover, and freight costs.  
+   - Identified outliers and anomalies to ensure data quality before advanced analysis.  
 
 3. **Statistical Analysis & Hypothesis Testing**  
-   - Measured correlations to find drivers of sales and profitability.  
-   - Conducted t-tests to confirm profit margin differences between vendor groups.  
+   - Examined correlations between purchase price, sales revenue, gross profit, and stock turnover.  
+   - Conducted t-tests to verify differences in profit margins between top- and low-performing vendors.  
 
 4. **Business Insights & Recommendations**  
-   - Converted findings into actionable steps for procurement, pricing, and inventory teams.  
-
----
-
-## 📂 Files in Repository  
-- `Vendor_Inventory_Analysis.ipynb` – Jupyter notebook with data cleaning, EDA, correlation analysis, and hypothesis testing.  
-- `data/` – Contains raw and cleaned datasets (if shared).  
+   - Translated findings into actionable strategies for procurement, pricing, and inventory optimization.  
 
 ---
 
@@ -42,64 +36,74 @@ I treated this analysis like a real-world supply chain consulting engagement:
 ### 1. Summary Statistics  
 | Metric | Observation |
 |--------|-------------|
-| **Gross Profit** | Some SKUs sold at a **loss** (Min: −₹52,002.78) → Review discounting and purchase cost |
-| **Profit Margin** | Division by zero caused invalid results for some SKUs → Need filtering |
-| **Freight Cost** | Highly variable (₹0.09–₹257,032.07) → Negotiate logistics contracts |
-| **Stock Turnover** | 0–274.5 → Both stagnant and fast-moving items coexist |
-| **Sales-to-Purchase Ratio** | Some SKUs draw entirely from stockpile (352.9x) → Optimize inventory restocking |
+| **Gross Profit** | Min: −₹52,002.78 → Some SKUs sold at a loss, likely due to discounts or high purchase prices |
+| **Profit Margin** | Invalid values for some SKUs due to division by zero → Need filtering of zero-sales SKUs |
+| **Total Sales Quantity & Dollars** | Min: 0 → Some inventory purchased but never sold, potential slow movers or obsolete stock |
+| **Purchase & Actual Prices** | High variance (₹24.39 avg vs ₹5,681.81 max) → Presence of low-cost and premium products |
+| **Freight Cost** | ₹0.09–₹257,032.07 → Logistics efficiency varies greatly |
+| **Stock Turnover** | 0–274.5 → Mix of unsold, normal, and fast-moving products |
+| **Sales-to-Purchase Ratio** | 0–352.9 → Some SKUs sold entirely from stockpile, signaling inventory imbalance |
 
 ---
 
 ### 2. Correlation Insights  
 | Variables | Correlation | Business Insight |
 |-----------|-------------|-----------------|
-| Purchase Price ↔ Total Sales | −0.012 | Purchase cost has negligible impact on total sales |
-| Total Purchase Qty ↔ Total Sales Qty | 0.999 | **Excellent operational efficiency** – purchases match demand |
-| Profit Margin ↔ Sales Price | −0.179 | Higher price items have lower margins → watch for price sensitivity |
+| Purchase Price ↔ Total Sales Dollars | −0.012 | Purchase cost has minimal impact on total sales revenue |
+| Total Purchase Qty ↔ Total Sales Qty | 0.999 | Purchases align closely with sales — **efficient inventory management** |
+| Profit Margin ↔ Total Sales Price | −0.179 | Higher sales prices tend to lower margins → pricing strategy consideration |
+| Stock Turnover ↔ Profit Margin | −0.055 | Fast-moving products don’t always yield higher profitability |
 
 ---
 
-### 3. Bulk Purchasing & Unit Cost Efficiency  
-- **Bulk Orders:** Avg cost per unit ~₹10.78  
-- **Small Orders:** Avg cost per unit significantly higher (≈72% difference)  
-✅ **Action:** Negotiate more bulk orders to reduce unit cost.  
+### 3. Vendor Profit Margin Analysis  
+
+- **Low-performing vendors:** 95% CI = 40.48–42.62% → Higher margins, likely premium/niche products  
+- **Top-performing vendors:** 95% CI = 30.74–31.61% → Lower margins despite higher sales  
+
+**Hypothesis Testing:**  
+- **H₀:** No difference in mean profit margins between vendor groups  
+- **Hₐ:** Significant difference exists  
+- **Result:** p < 0.001 → Reject H₀. Profit margins differ significantly between top and low-performing vendors.  
+
+**📷 95% Confidence Interval Visualization**  
+![Profit Margins 95% CI](<img width="1266" height="739" alt="Screenshot 2025-09-24 152206" src="https://github.com/user-attachments/assets/84c46933-b719-4d35-8935-5e2feaf8d35f" />
+)  
 
 ---
 
-### 4. Vendor Profit Margin Analysis  
-- **Low-performing vendors:** Higher average margins (40–42%) → Likely premium/niche products  
-- **Top vendors:** Lower margins (30–31%) → Improve via dynamic pricing, cost control, bundling  
+### 4. Vendor Contribution to Total Purchases  
 
----
+- Majority of purchase dollars are concentrated among a few vendors → **focus on high-value vendors for negotiations**  
+- Remaining vendors account for smaller purchases → **monitor for cost-effectiveness and slow movers**  
 
-### 5. Hypothesis Testing  
-**Result:** Significant difference in profit margins between vendor groups (p < 0.001).  
-✅ Confirms that vendor segmentation strategy can be used to tailor procurement and pricing actions.  
+**📷 Vendor Contribution Visualization**  
+![Vendor Purchase Contribution](<img width="1239" height="740" alt="Screenshot 2025-09-24 152125" src="https://github.com/user-attachments/assets/d8b69a09-02af-4515-8275-59557e4b3539" />
+)  
 
 ---
 
 ## 💡 Business Recommendations  
-- **Eliminate loss-making SKUs** or renegotiate procurement prices.  
-- **Optimize freight costs** by consolidating shipments or switching vendors with extreme cost variability.  
-- **Leverage bulk purchase discounts** to lower per-unit costs and boost margins.  
-- **Segment vendors** based on profit margin contribution — apply different pricing & marketing strategies.  
-- **Automate zero-sales filtering** to focus on active, revenue-generating inventory.  
+- **Eliminate or renegotiate loss-making SKUs** to prevent revenue leakage.  
+- **Optimize freight costs** by consolidating shipments or reviewing high-cost vendors.  
+- **Leverage bulk purchase discounts** to reduce per-unit costs and increase margins.  
+- **Segment vendors** based on profit contribution → tailor procurement and pricing strategies.  
+- **Focus marketing and distribution** for low-performing but high-margin vendors.  
+- **Automate zero-sales filtering** to prioritize revenue-generating SKUs.  
 
 ---
 
 ## ✅ Next Steps  
-1. Enhance visualization dashboards (e.g., monthly trends, vendor segmentation charts).  
-2. Build predictive models for **profit margin forecasting** and **stock turnover prediction**.  
-3. Share insights with procurement & finance teams for strategic implementation.  
+1. Develop **interactive dashboards** for vendor performance, profit margins, and inventory turnover.  
+2. Build **predictive models** for profit margin forecasting and stock movement prediction.  
+3. Present findings to procurement and finance teams to guide strategic decisions.  
 
 ---
 
 ## 🎯 Business Impact  
-This project helps companies:  
+By implementing these recommendations, companies can:  
 - Reduce **logistics costs** by up to 20%  
-- Improve **profit margins** through smarter purchasing  
+- Improve **profit margins** through optimized pricing and vendor strategies  
 - Minimize **inventory holding costs** by identifying slow movers  
-- Build a **data-driven vendor negotiation strategy**  
-
----
-
+- Establish a **data-driven vendor negotiation framework**  
+v
