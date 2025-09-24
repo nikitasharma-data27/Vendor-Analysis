@@ -67,7 +67,7 @@ I approached this analysis like a **real-world supply chain consulting engagemen
 - **Result:** p < 0.001 → Reject H₀. Profit margins differ significantly between top and low-performing vendors.  
 
 **📷 95% Confidence Interval Visualization**  
-![Profit Margins 95% CI](<img width="1266" height="739" alt="Screenshot 2025-09-24 152206" src="https://github.com/user-attachments/assets/84c46933-b719-4d35-8935-5e2feaf8d35f" />
+![Profit Margins 95% CI](<img width="1266" height="739" alt="Screenshot 2025-09-24 152206" src="https://github.com/user-attachments/assets/b125b5b8-234c-4e21-9555-b7a6f2bb5f83" />
 )  
 
 ---
@@ -78,7 +78,7 @@ I approached this analysis like a **real-world supply chain consulting engagemen
 - Remaining vendors account for smaller purchases → **monitor for cost-effectiveness and slow movers**  
 
 **📷 Vendor Contribution Visualization**  
-![Vendor Purchase Contribution](<img width="1239" height="740" alt="Screenshot 2025-09-24 152125" src="https://github.com/user-attachments/assets/d8b69a09-02af-4515-8275-59557e4b3539" />
+![Vendor Purchase Contribution](<img width="1239" height="740" alt="Screenshot 2025-09-24 152125" src="https://github.com/user-attachments/assets/3b9af2b9-84e9-4d21-8ec3-de5a7d8a3cc4" />
 )  
 
 ---
